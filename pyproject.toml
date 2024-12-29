@@ -1,20 +1,36 @@
+[project]
+name = "mentorme"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.1.4",
+    "psycopg[binary,pool]>=3.2.3",
+]
+
+[dependency-groups]
+dev = [
+  "ruff>=0.8.4",
+]
+
 # RUFF settings
 [tool.ruff]
-target-version = "py311"
+target-version = "py312"
 line-length = 99
 
 [tool.ruff.lint]
 select = [
-    "C",  # mccabe rules
-    "F",  # pyflakes rules
-    "E",  # pycodestyle error rules
-    "W",  # pycodestyle warning rules
-    "B",  # flake8-bugbear rules
-    "I",  # isort rules
+  "C",  # mccabe rules
+  "F",  # pyflakes rules
+  "E",  # pycodestyle error rules
+  "W",  # pycodestyle warning rules
+  "B",  # flake8-bugbear rules
+  "I",  # isort rules
 ]
 ignore = [
-    # "C901",  # max-complexity-10
-    "E501",  # line-too-long
+  # "C901",  # max-complexity-10
+  "E501",  # line-too-long
 ]
 
 # LEGACY Formatting settings - Keeping these to allow for these tools to run compatibily with Ruff.
@@ -26,7 +42,7 @@ known_third_party = ["boto", "botocore", "django", "rest_framework"]
 
 [tool.black]
 line-length = 99
-target-version = ['py311']
+target-version = ['py312']
 force-exclude = '''
 (
   /(
