@@ -4,18 +4,25 @@ A mentor and mentee matching app
 
 ## Setup
 
-*TODO: populate this section with how to setup required tools: editorcondig, pre-commit, docker, etc*
+*TODO: populate this section with how to setup required tools: editorconfig, pre-commit, docker, etc*
 
 Before you start make sure you have the following installed.
 
 https://docs.djangoproject.com/en/5.1/ref/contrib/gis/install/geolibs/
 
-- gdal : `brew install gdal postgis`
-- uv: `brew install uv`
-- pre-commit: `brew install pre-commit`
+- postgis + gdal : mac`brew install postgis`or linux `sudo apt-get install binutils libproj-dev gdal-bin`
+- uv: mac `brew install uv`
+- pre-commit: mac `brew install pre-commit`
 
+modify your ~/.zprofile file to add these lines
 
-To setup your local virtual environement run
+mac
+```shell
+export GDAL_LIBRARY_PATH="/opt/homebrew/opt/gdal/lib/libgdal.dylib"
+export GEOS_LIBRARY_PATH="/opt/homebrew/opt/geos/lib/libgeos_c.dylib"
+```
+
+To setup your local virtual environment run
 
     uv venv
 
@@ -23,15 +30,16 @@ To make sure you have all your dependencies installed run this command
 
     uv sync
 
-
-
 ## Running and teesting locally
+
+    uv run manage.py migrate
+    uv run manage.py runserver
 
 ### Getting the postgis database up and going
 
 To run locally you'll need to have docker running on your machine.
 
-then in your teminal, navigate to the folder which containers this file and type the following
+then in your terminal, navigate to the folder which containers this file and type the following
 
     docker-compose up
 
