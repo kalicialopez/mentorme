@@ -24,6 +24,21 @@ export GDAL_LIBRARY_PATH="/opt/homebrew/opt/gdal/lib/libgdal.dylib"
 export GEOS_LIBRARY_PATH="/opt/homebrew/opt/geos/lib/libgeos_c.dylib"
 ```
 
+### Project Prerequisites
+
+mentorme requires [uv](https://docs.astral.sh/uv/) for development. The recommended way to install uv is to use
+[pipx](https://github.com/pypa/pipx).
+
+```shell
+pipx install uv
+```
+
+Alternatively, it is possible to install uv using brew:
+
+```shell
+brew install uv
+```
+
 To setup your local virtual environment run
 
     uv venv
