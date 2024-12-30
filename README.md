@@ -8,17 +8,35 @@ A mentor and mentee matching app
 
 *TODO: populate this section with how to setup required tools: editorconfig, pre-commit, docker, etc*
 
-Before you start make sure you have the following installed;
+### Geospatial Prerequisites
+
+Before you start make sure you have the following installed:
 
 https://docs.djangoproject.com/en/5.1/ref/contrib/gis/install/geolibs/
-- postgreSQL: mac `brew install postgresql`  
-- postgis + gdal: mac `brew install postgis`or linux `sudo apt-get install binutils libproj-dev gdal-bin`
-- uv: mac `brew install uv`
-- pre-commit: mac `brew install pre-commit`
 
-Modify your ~/.zprofile file to add these lines;
+We need to install these libraries and tell Django where to find them. This varies by your OS/Platform.
 
-mac
+#### Linux
+
+```shell
+sudo apt-get install binutils libproj-dev gdal-bin
+```
+
+TODO: Show how to insert environment variable in a persistent manner
+
+```shell
+export GDAL_LIBRARY_PATH="/path/to/your/gdal/installation"
+export GEOS_LIBRARY_PATH="/path/to/your/geos/installation"
+```
+
+#### mac
+
+```shell
+brew install postgis
+```
+
+Then modify your ~/.zprofile file to add these lines
+
 ```shell
 export GDAL_LIBRARY_PATH="/opt/homebrew/opt/gdal/lib/libgdal.dylib"
 export GEOS_LIBRARY_PATH="/opt/homebrew/opt/geos/lib/libgeos_c.dylib"
@@ -33,7 +51,7 @@ mentorme requires [uv](https://docs.astral.sh/uv/) for development. The recommen
 pipx install uv
 ```
 
-Alternatively, it is possible to install uv using brew:
+Alternatively, it is preferable on Mac to install uv using Brew:
 
 ```shell
 brew install uv
@@ -56,7 +74,7 @@ To make sure you have all your dependencies installed run this command
 
     docker-compose up --build
 
-### Getting the postgis database up and going
+### Getting the postgis database up and going (needed for local running)
 
 To run locally you'll need to have docker running on your machine.
 
