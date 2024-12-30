@@ -14,6 +14,7 @@ insert_final_newline = true
 # python files
 [*.py]
 trim_trailing_whitespace = true
+max_line_length = 99  # Match line length used by ruff in pyproject.toml
 
 # config files
 [*.{json,json5,yaml,yml,toml}]
