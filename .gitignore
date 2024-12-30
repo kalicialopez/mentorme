@@ -169,3 +169,11 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# misc
+**/.DS_Store
+
+
+# txt files
+working-notes.txt
+project-spec.txt

@@ -6,15 +6,15 @@ A mentor and mentee matching app
 
 *TODO: populate this section with how to setup required tools: editorconfig, pre-commit, docker, etc*
 
-Before you start make sure you have the following installed.
+Before you start make sure you have the following installed;
 
 https://docs.djangoproject.com/en/5.1/ref/contrib/gis/install/geolibs/
-
-- postgis + gdal : mac`brew install postgis`or linux `sudo apt-get install binutils libproj-dev gdal-bin`
+- postgreSQL: mac `brew install postgresql`  
+- postgis + gdal: mac `brew install postgis`or linux `sudo apt-get install binutils libproj-dev gdal-bin`
 - uv: mac `brew install uv`
 - pre-commit: mac `brew install pre-commit`
 
-modify your ~/.zprofile file to add these lines
+Modify your ~/.zprofile file to add these lines;
 
 mac
 ```shell
