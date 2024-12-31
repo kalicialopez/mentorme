@@ -18,6 +18,10 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_HOST=db
       - POSTGRES_PORT=5432
+    depends_on:
+      db:
+        condition: service_healthy
+        restart: true
 
   db:
     image: postgis/postgis:17-3.5
@@ -36,4 +40,10 @@ services:
       - "5432:5432"
     restart: on-failure
     healthcheck:
+      # https://docs.docker.com/reference/dockerfile/#healthcheck
       test: "PGPASSWORD=postgres pg_isready -h 127.0.0.1 -U postgres -d mentorme"
+      start_period: 10s
+      start_interval: 2s
+      timeout: 2s
+      interval: 30s
+      retries: 10
