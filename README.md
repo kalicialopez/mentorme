@@ -72,7 +72,7 @@ To make sure you have all your dependencies installed run this command
 
 ## Running and testing locally (docker)
 
-    docker-compose up --build
+    docker compose up --build
 
 ### Getting the postgis database up and going (needed for local running)
 
@@ -80,11 +80,11 @@ To run locally you'll need to have docker running on your machine.
 
 then in your terminal, navigate to the folder which containers this file and type the following
 
-    docker-compose up db
+    docker compose up db
 
 if you need to wipe your database and start again you can use this command, this will destroy all data.
 
-    docker-compose down -v db
+    docker compose down -v db
 
 *TODO: fill this with howto*
 
