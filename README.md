@@ -2,7 +2,9 @@
 
 A mentor and mentee matching app
 
-## Setup
+## Setup (directly)
+
+*Note: you can just use docker if you only want to get this up and going for testing*
 
 *TODO: populate this section with how to setup required tools: editorconfig, pre-commit, docker, etc*
 
@@ -30,10 +32,14 @@ To make sure you have all your dependencies installed run this command
 
     uv sync
 
-## Running and teesting locally
+## Running and testing locally (directly)
 
     uv run manage.py migrate
     uv run manage.py runserver
+
+## Running and testing locally (docker)
+
+    docker-compose up --build
 
 ### Getting the postgis database up and going
 
@@ -41,11 +47,11 @@ To run locally you'll need to have docker running on your machine.
 
 then in your terminal, navigate to the folder which containers this file and type the following
 
-    docker-compose up
+    docker-compose up db
 
 if you need to wipe your database and start again you can use this command, this will destroy all data.
 
-    docker-compose down -v
+    docker-compose down -v db
 
 *TODO: fill this with howto*
 

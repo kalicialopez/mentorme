@@ -1,2 +1,2 @@
-./pyproject.toml
-./uv.lock
+pyproject.toml
+uv.lock
