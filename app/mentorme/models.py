@@ -11,6 +11,11 @@ class SkillProficiencyLevel(models.IntegerChoices):
     EXPERT = 5, "Expert"
 
 
+class SessionMode(models.IntegerChoices):
+    IN_PERSON = 1, "In Person"
+    VIRTUAL = 2, "Virtual"
+
+
 class Skill(models.Model):
     name = models.CharField(max_length=100)
 
@@ -35,7 +40,7 @@ class MentorshipSession(models.Model):
 
     scheduled_time = models.DateTimeField()
     duration = models.DurationField()
-    in_person = models.BooleanField()
+    mode = models.SmallIntegerField(choices=SessionMode.choices)
 
 
 class MentorshipSessionReview(models.Model):
