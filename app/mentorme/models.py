@@ -34,7 +34,7 @@ class MentorshipSession(models.Model):
     mentor = models.ForeignKey(User, on_delete=models.CASCADE)
 
     scheduled_time = models.DateTimeField()
-    duration = models.TimeField()
+    duration = models.DurationField()
     in_person = models.BooleanField()
 
 
