@@ -65,7 +65,21 @@ To make sure you have all your dependencies installed run this command
 
     uv sync
 
-## Running and testing locally (directly)
+## Running and testing locally (directly with uv)
+
+### migrate and run server (activate the venv)
+
+activate the venv
+
+    source .venv/bin/activate
+
+change directory and run manage.py commands
+
+    cd app
+    ./manage.py migrate
+    ./manage.py runserver
+
+### migrate and run server (with UV)
 
     uv run manage.py migrate
     uv run manage.py runserver
