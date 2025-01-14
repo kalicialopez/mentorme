@@ -20,6 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 GDAL_LIBRARY_PATH = os.environ.get("GDAL_LIBRARY_PATH", "")
 GEOS_LIBRARY_PATH = os.environ.get("GEOS_LIBRARY_PATH", "")
 
+SITE_ID = 1
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -41,7 +43,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # AUTH
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.github",
+    # GIS
     "django.contrib.gis",
+    # Site Apps
     "mentoring",
 ]
 
@@ -53,6 +62,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "mentorme.urls"
@@ -60,7 +71,9 @@ ROOT_URLCONF = "mentorme.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            "templates",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -90,6 +103,31 @@ DATABASES = {
     }
 }
 
+
+# Authentication Backends
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by email
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+# ACCOUNT_EMAIL_VERIFICATION = "none" turns off verification emails. Django automatically sets up an email verification workflow. We do not need this functionality right now.
+ACCOUNT_EMAIL_VERIFICATION = "none"
+# LOGIN_REDIRECT_URL = "home" redirects the user to the homepage after a successful login.
+LOGIN_REDIRECT_URL = "index"
+# ACCOUNT_LOGOUT_ON_GET = True directly logs the user out when the logout button is clicked via a GET request. This skips the confirm logout page.
+ACCOUNT_LOGOUT_ON_GET = True
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    "github": {
+        # For each provider, you can choose whether or not the
+        # email address(es) retrieved from the provider are to be
+        # interpreted as verified.
+        "VERIFIED_EMAIL": True,
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -131,3 +169,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Email File Based Test
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR.parent / "emails"
