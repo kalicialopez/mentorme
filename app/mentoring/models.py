@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.contrib.gis.db import models as gis_models
-from django.db import models
+from django.contrib.gis.db import models
 
 ###
 # Choices
@@ -57,7 +56,10 @@ class Profile(models.Model):
     )  # TODO: this requires user uploading, may not be the best idea
     bio = models.TextField(max_length=1_000, blank=True)
     birthday = models.DateField(null=True, blank=True)
-    location = gis_models.PointField(geography=True, spatial_index=True)
+    location = models.PointField(
+        geography=True,
+        # spatial_index=True,
+    )
     skills = models.ManyToManyField(
         Skill,
         through="SkillProficiency",
