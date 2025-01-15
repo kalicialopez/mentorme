@@ -50,6 +50,11 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.github",
     # GIS
     "django.contrib.gis",
+    # CSS + JS
+    # "compressor",
+    "fontawesomefree",
+    "tailwind",
+    "theme",
     # Site Apps
     "mentoring",
 ]
@@ -165,6 +170,17 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "static"
+
+# Compressor settings
+# COMPRESS_ROOT defines the absolute location from where the files to be compressed are read from and the compressed files are written to.
+# COMPRESS_ROOT = STATIC_ROOT
+# COMPRESS_ENABLED boolean to determine whether compression will happen. It defaults to the opposite value of DEBUG.
+# COMPRESS_ENABLED = True
+# STATICFILES_FINDERS must include Django Compressor’s file finder when django.contrib.staticfiles is installed.
+# STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
+
+TAILWIND_APP_NAME = "theme"
+INTERNAL_IPS = ["127.0.0.1"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

@@ -1,24 +1,37 @@
-{% extends 'base.html' %} {% load socialaccount %}
+{% extends '_base.html' %}
+{% load socialaccount tailwind_tags %}
+
+{% block extra_head %}
+{% providers_media_js %}
+{% endblock %}
+
+{% block head_title %}Home{% endblock %}
 
 {% block content %}
-
-  <div class="container" style="text-align: center; padding-top: 10%;">
-    <h1>Django Social Login</h1>
+    <h1 class="text-5xl">Django AllAuth Social Login</h1>
 
     <br /><br />
 
     {% if user.is_authenticated %}
-      <h3>Welcome {{ user.username }} !!!</h3>
-      <br /><br />
-      <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
+      {%  if user.profile %}
+        <h3>Welcome {{ user.profile.screen_name }}</h3>
+      {% else %}
+        <h3>Welcome {{ user.username }} you have not yet finished your profile!!!</h3>
+      {% endif %}
+      <br />
+      <br />
+      <a href="{% url 'account_logout' %}">
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          Logout
+        </button>
+      </a>
     {% else %}
       <!-- GitHub button starts here -->
-      <a href="{% provider_login_url 'github' %}" class="btn btn-secondary">
-        <i class="fa fa-github fa-fw"></i>
-        <span>Login with GitHub</span>
+      <a href="{% provider_login_url 'github' %}" >
+        <button class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <i class="fa-brands fa-github"></i> Login with GitHub
+        </button>
       </a>
       <!-- GitHub button ends here -->
     {% endif %}
-  </div>
-
 {% endblock content %}
