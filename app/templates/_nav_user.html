@@ -37,6 +37,8 @@
       <ul class="py-2">
 
         {% include "_nav_user_item.html" with path_name="mentoring:my_profile" title="My Profile" %}
+        {% include "_nav_user_item.html" with path_name="account_email" title="Emails Management" %}
+        {% include "_nav_user_item.html" with path_name="socialaccount_connections" title="Account Management" %}
         {% url "account_logout" as url %}
         {% include "_nav_user_item.html" with url=url title="Logout" %}
       </ul>
