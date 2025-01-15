@@ -14,12 +14,15 @@ dependencies = [
 dev = [
   "ruff>=0.8.4",
   "pre-commit>=4.0.1",
+  "ipython>=8.31.0",
 ]
 
 # RUFF settings
 [tool.ruff]
 target-version = "py312"
 line-length = 99
+extend-exclude = ["app/*/migrations/*.py"]
+
 
 [tool.ruff.lint]
 select = [
