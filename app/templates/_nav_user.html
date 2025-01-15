@@ -1,0 +1,51 @@
+{% load static %}
+<div
+  x-data="{ open: false }"
+  class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"
+>
+  <!-- user icon -->
+  <button
+    type="button"
+    x-on:click="open = true"
+    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+    id="user-menu-button"
+  >
+    <span class="sr-only">Open user menu</span>
+    {% if user.is_authenticated %}
+      {% if user.profile.picture %}
+        <img class="w-8 h-8 rounded-full" src="{{ user.profile.picture.url }}" alt="user photo">
+      {% else %}
+        <img class="w-8 h-8 rounded-full" src="{% static "default_user.png" %}" alt="user photo">
+      {% endif %}
+    {% else %}
+      <img class="w-8 h-8 rounded-full" src="{% static "red-x.png" %}" alt="user photo">
+    {% endif %}
+  </button>
+
+  <!-- user menu -->
+  <div
+    x-show="open"
+    x-on:click.away="open = false"
+    class="absolute top-10 right-0 z-50 my-4 p-2 min-w-60 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+    id="user-dropdown"
+  >
+    {% if user.is_authenticated %}
+      <div class="px-4 py-3">
+        <span class="block text-sm text-gray-900 dark:text-white">{{ user.profile.screen_name }}</span>
+        <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ user.email }}</span>
+      </div>
+      <ul class="py-2">
+
+        {% include "_nav_user_item.html" with path_name="mentoring:my_profile" title="My Profile" %}
+        {% url "account_logout" as url %}
+        {% include "_nav_user_item.html" with url=url title="Logout" %}
+      </ul>
+    {% else %}
+      <ul class="py-2">
+        {% include "_nav_user_item.html" with path_name="account_login" title="Login" %}
+      </ul>
+    {% endif %}
+  </div>
+
+
+</div>
