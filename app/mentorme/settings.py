@@ -169,7 +169,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = BASE_DIR / "static_root"
 
 # Compressor settings
 # COMPRESS_ROOT defines the absolute location from where the files to be compressed are read from and the compressed files are written to.

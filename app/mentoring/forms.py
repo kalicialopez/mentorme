@@ -3,7 +3,16 @@ from django.contrib.gis import forms
 from .models import Profile
 
 
-class ProfileForm(forms.ModelForm):
+class StyledModelForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs["class"] = (
+                "text-gray-700 dark:text-gray-200 bg-gray-200 dark:bg-gray-700 input input-bordered w-full max-w-xs"
+            )
+
+
+class ProfileForm(StyledModelForm):
     class Meta:
         model = Profile
         exclude = [
