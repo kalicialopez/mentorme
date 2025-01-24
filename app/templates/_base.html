@@ -1,0 +1,38 @@
+{#{% load compress %}#}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}MentorMe - {% block head_title %}Page{% endblock %}{% endblock %}</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{#  {% compress css %}#}
+    {% tailwind_css %}
+{#  {% endcompress %}#}
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+  {% block extra_head %}
+  {% endblock %}
+</head>
+
+<body class="font-serif leading-normal tracking-normal">
+<!-- _nav.html start -->
+{% include "_nav.html" %}
+<!-- _nav.html end -->
+
+  <div class="container mx-auto">
+    <div class="flex flex-row flex-wrap py-4">
+      <main role="main" class="w-full">
+        <!-- main_content start -->
+        {% block main_content %}
+          <!-- content start -->
+          {% block content %}{% endblock content %}
+          <!-- content end -->
+        {% endblock main_content %}
+        <!-- main_content end -->
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>

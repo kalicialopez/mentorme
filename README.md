@@ -75,16 +75,27 @@ activate the venv
 
 change directory and run manage.py commands
 
+*Note: you will need to have the database running*
+
     cd app
     ./manage.py migrate
+    ./manage.py tailwind start
+
+Open another terminal, activate your venv as above and then runserver
+
+    cd app
     ./manage.py runserver
 
 ### migrate and run server (with UV)
+
+*Note: you will need to have the database running*
 
     uv run manage.py migrate
     uv run manage.py runserver
 
 ## Running and testing locally (docker)
+
+**NOTE: TODO: this is not up to date**
 
     docker compose up --build
 

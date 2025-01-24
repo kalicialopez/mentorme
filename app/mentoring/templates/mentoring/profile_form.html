@@ -1,0 +1,27 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block extra_head %}
+{{ form.media }}
+  <style>
+  #id_location_div_map {
+    height: 500px;
+    width: 500px;
+  }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div id="form">
+    <form enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <div style="clear:both">
+        <br/>
+        <input type="submit" value="Save">
+      </div>
+    </form>
+  </div>
+  <div id="map"></div>
+{% endblock %}
