@@ -48,11 +48,11 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.github",
+    "allauth.mfa",
     # GIS
     "django.contrib.gis",
     # CSS + JS
     # "compressor",
-    "fontawesomefree",
     "tailwind",
     "theme",
     # Site Apps

@@ -7,10 +7,9 @@ requires-python = ">=3.12"
 dependencies = [
     "cookiecutter>=2.6.0",
     "django>=5.1.4",
-    "django-allauth[socialaccount]>=65.3.1",
+    "django-allauth[socialaccount,mfa]>=65.3.1",
     "django-compressor>=4.5.1",
     "django-tailwind[reload]>=3.8.0",
-    "fontawesomefree>=6.6.0",
     "pillow>=11.1.0",
     "psycopg[binary,pool]>=3.2.3",
 ]
