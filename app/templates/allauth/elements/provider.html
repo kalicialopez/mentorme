@@ -1,5 +1,10 @@
 <li role="button">
-  <a title="{{ attrs.name }}" href="{{ attrs.href }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-    <i class="fa-brands fa-{{ attrs.name|lower }}"></i> {{ attrs.name }}
+  <a
+    title="{{ attrs.name }}"
+    href="{{ attrs.href }}"
+    class="icon-before icon-space-sm icon-{{ attrs.name|lower }} bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  >
+{#    <i class="icon-github"></i> #}
+    {{ attrs.name }}
   </a>
 </li>

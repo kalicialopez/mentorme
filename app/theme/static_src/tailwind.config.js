@@ -56,4 +56,7 @@ module.exports = {
     require('tailwind-fontawesome'),
     require('daisyui'),
   ],
+  daisyui: {
+    themes: ["light", "dark", "cupcake"],
+  },
 }
